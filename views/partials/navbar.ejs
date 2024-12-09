@@ -1,0 +1,80 @@
+<div class="navbar bg-base-100 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <a class="text-lg font-bold" href="/">LEGO COLLECTION</a>
+        <div class="hidden md:flex space-x-4">
+            <a class="btn btn-ghost <%= (page == '/') ? 'underline' : '' %>" href="/">Home</a>
+            <a class="btn btn-ghost <%= (page == '/about') ? 'underline' : '' %>" href="/about">About</a>
+            <a class="btn btn-ghost <%= (page == '/lego/sets') ? 'underline' : '' %>" href="/lego/sets">View Collection</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+            <% if (session.user) { %>
+                <div class="relative">
+                    <button id="account-button" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img src="<%= user.profileImage %>" alt="User Avatar" onerror="this.src='/images/default-avatar.jpeg'" />
+
+                        </div>
+                    </button>
+                    <div id="account-menu" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg">
+                        <a href="/lego/addSet" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Add to Collection</a>
+                        <a href="/userHistory" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">User History</a>
+                        <a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Log Out</a>
+                    </div>
+                </div>
+                <script>console.log("Profile Image Path:", "<%= session.user.profileImage %>");</script>
+            <% } else { %>
+                <a class="btn btn-ghost <%= (page == '/login') ? 'underline' : '' %>" href="/login">Login</a>
+                <a class="btn btn-ghost <%= (page == '/register') ? 'underline' : '' %>" href="/register">Register</a>
+            <% } %>
+        </div>
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-700 hover:text-gray-900">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/') ? 'underline' : '' %>" href="/">Home</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/about') ? 'underline' : '' %>" href="/about">About</a>
+            <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/lego/sets') ? 'underline' : '' %>" href="/lego/sets">View Collection</a>
+            <% if (session.user) { %>
+                <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/lego/addSet') ? 'underline' : '' %>" href="/lego/addSet">Add to Collection</a>
+                <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/userHistory') ? 'underline' : '' %>" href="/userHistory">User History</a>
+                <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900" href="/logout">Log Out</a>
+            <% } else { %>
+                <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/login') ? 'underline' : '' %>" href="/login">Login</a>
+                <a class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 <%= (page == '/register') ? 'underline' : '' %>" href="/register">Register</a>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('account-button').addEventListener('click', function () {
+        document.getElementById('account-menu').classList.toggle('hidden');
+    });
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('#account-button') && !event.target.closest('#account-menu')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (!openDropdown.classList.contains('hidden')) {
+                    openDropdown.classList.add('hidden');
+                }
+            }
+        }
+    };
+
+    // Toggle mobile menu
+    const btn = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
+</script>

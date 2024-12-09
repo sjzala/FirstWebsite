@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= set.name %></title>
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <%- include('partials/navbar', { page: "" }) %>
+
+    <div class="hero bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold"><%= set.name %></h1>
+                <p class="py-6">Below, you will find detailed information about the set: <%= set.name %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+        <div class="card w-full lg:card-side bg-base-100 shadow-xl">
+            <figure><img src="<%= set.img_url %>" alt="<%= set.name %>"></figure>
+            <div class="card-body">
+                <h2 class="card-title"><%= set.name %></h2>
+                <p><strong>Theme:</strong> <%= set.Theme.name %></p>
+                <p><strong>Year:</strong> <%= set.year %></p>
+                <p><strong>Number of Parts:</strong> <%= set.num_parts %></p>
+                <div id="quote"></div>
+                <div class="card-actions justify-end">
+                    <% if (session.user) { %>
+                        <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success">Edit</a>
+                    <% } %>
+                    <a href="#" onclick="history.back(); return false;" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('https://quotable.io/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('quote').innerHTML = `<p>${data.content} - <em>${data.author}</em></p>`;
+                });
+        });
+    </script>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '' }) %>
+    <div class="container mx-auto">
+        <div class="hero min-h-screen bg-base-200" style="background-image: url('/images/heroimg.jpeg'); background-size: cover; background-position: center;">
+            <div class="hero-content text-center bg-opacity-75 bg-base-200 p-10 rounded-lg">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Page Not Found</h1>
+                    <p class="py-6">Sorry, we couldn’t find the page you’re looking for.</p>
+                    <a href="/" class="btn btn-primary">Go Home</a>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>

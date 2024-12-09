@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/about' }) %>
+    <div class="container mx-auto">
+        <div class="hero min-h-screen bg-base-200" style="background-image: url('/images/heroimg.jpeg'); background-size: cover; background-position: center;">
+            <div class="hero-content text-center bg-opacity-75 bg-base-200 p-10 rounded-lg">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">About</h1>
+                    <p class="py-6">All about me.</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+            <div>
+                <img src="/images/my-pic.jpeg" alt="Your Image" class="rounded-lg shadow-lg">
+            </div>
+            <div>
+                <p>Hi, I'm Shailendrasinh Zala, a passionate web enthusiast currently in my 4th semester of the Computer Programming and Analysis (CPA) course at Seneca College. With a solid foundation in both frontend and backend development, I love diving into web projects beyond my coursework. Right now, I'm enhancing my skills by learning React.js and exploring the dynamic world of web development.</p>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>

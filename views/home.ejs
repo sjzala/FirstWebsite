@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection</title>
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/' }) %>
+    <div class="container mx-auto">
+        <div class="hero min-h-screen bg-base-200" style="background-image: url('/images/heroimg.jpeg'); background-size: cover; background-position: center;">
+            <div class="hero-content text-center bg-opacity-75 bg-base-200 p-10 rounded-lg">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Explore our Lego Collection</h1>
+                    <p class="py-6">Discover the most amazing Lego sets ever created.</p>
+                    <a href="/lego/sets" class="btn btn-primary">View Sets</a>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+            <div class="card bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <img src="https://cdn.rebrickable.com/media/sets/001-1.jpg" alt="Gears" class="rounded-xl w-full h-48 object-contain" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Gears</h2>
+                    <p>This set, released in 1965, contains 43 parts and introduces the concept of gears.</p>
+                    <div class="card-actions">
+                        <a href="/lego/sets/001-1" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <img src="https://cdn.rebrickable.com/media/sets/0011-2.jpg" alt="Town Mini-Figures" class="rounded-xl w-full h-48 object-contain" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Town Mini-Figures</h2>
+                    <p>Released in 1979, this set includes 12 parts to build town mini-figures.</p>
+                    <div class="card-actions">
+                        <a href="/lego/sets/0011-2" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <img src="https://cdn.rebrickable.com/media/sets/0011-3.jpg" alt="Castle 2 for 1 Bonus Offer" class="rounded-xl w-full h-48 object-contain" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Castle 2 for 1 Bonus Offer</h2>
+                    <p>This 1987 set is a special bonus offer for castle enthusiasts.</p>
+                    <div class="card-actions">
+                        <a href="/lego/sets/0011-3" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>
